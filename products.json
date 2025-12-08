@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "پیراهن مردانه کلاسیک مشکی",
+    "price": 350000,
+    "description": "پیراهن مردانه با کیفیت بالا، پارچه نخی مرغوب، مناسب برای مجالس رسمی",
+    "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "colors": ["مشکی", "سفید"]
+  },
+  {
+    "id": 2,
+    "name": "پیراهن زنانه ابریشمی قرمز",
+    "price": 450000,
+    "description": "پیراهن زنانه ابریشمی با طراحی شیک و مدرن، دوخت حرفه‌ای",
+    "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "colors": ["قرمز", "آبی"]
+  },
+  {
+    "id": 3,
+    "name": "کت مردانه رسمی خاکستری",
+    "price": 850000,
+    "description": "کت مردانه رسمی با پارچه مرغوب، مناسب مراسم خاص و جلسات مهم",
+    "image": "https://images.unsplash.com/photo-1539533018447-63fb190c0a7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "colors": ["خاکستری", "مشکی"]
+  }
+]
