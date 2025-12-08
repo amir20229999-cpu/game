@@ -3,533 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پنل مدیریت | بوتیک موناکو</title>
+    <title>پنل مدیریت | موناکو</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* استایل‌ها مشابه index.html اما برای پنل مدیریت */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Vazirmatn', sans-serif;
             background: #f5f7fa;
             min-height: 100vh;
-        }
-
-        .admin-container {
             display: flex;
-            min-height: 100vh;
-        }
-
-        .sidebar {
-            width: 280px;
-            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-            color: white;
-            padding: 2rem 0;
-        }
-
-        .sidebar-header {
-            padding: 0 2rem 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .sidebar-header h2 {
-            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 12px;
-            font-size: 1.5rem;
-        }
-
-        .nav-menu {
-            list-style: none;
-            padding: 2rem 0;
-        }
-
-        .nav-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 1rem 2rem;
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: rgba(231, 76, 60, 0.2);
-            color: white;
-            border-right: 4px solid #e74c3c;
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 2rem;
-        }
-
-        .header {
-            background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .content-grid {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .btn {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #2c3e50;
-            color: white;
         }
 
         .login-container {
-            max-width: 400px;
-            margin: 100px auto;
-            padding: 3rem;
             background: white;
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
-        .form-control {
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input {
             width: 100%;
             padding: 12px 16px;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border 0.3s;
         }
 
-        .form-control:focus {
+        input:focus {
             outline: none;
-            border-color: #e74c3c;
+            border-color: #3498db;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="admin-container" id="adminContainer">
-        <!-- این بخش با اسکریپت پر می‌شود -->
+    <div class="login-container">
+        <h2><i class="fas fa-lock"></i> ورود به پنل مدیریت</h2>
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> ایمیل مدیریت</label>
+                <input type="email" id="adminEmail" value="admin_shaian@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-key"></i> رمز عبور</label>
+                <input type="password" id="adminPassword" value="shaian_112233" required>
+            </div>
+            <button type="submit" class="btn">
+                <i class="fas fa-sign-in-alt"></i> ورود به پنل
+            </button>
+        </form>
+        <div class="message">
+            <p>برای بازگشت به فروشگاه <a href="index.html">اینجا</a> کلیک کنید</p>
+        </div>
     </div>
 
     <script>
-        // بررسی لاگین
-        const currentUser = JSON.parse(localStorage.getItem('current_user'));
-        
-        if (!currentUser || !currentUser.isAdmin) {
-            // نمایش فرم لاگین
-            document.getElementById('adminContainer').innerHTML = `
-                <div class="login-container">
-                    <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">
-                        <i class="fas fa-lock"></i> ورود به پنل مدیریت
-                    </h2>
-                    <form id="adminLoginForm">
-                        <div class="form-group">
-                            <label>ایمیل مدیریت</label>
-                            <input type="email" id="adminEmail" class="form-control" required placeholder="admin@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label>رمز عبور</label>
-                            <input type="password" id="adminPassword" class="form-control" required placeholder="••••••••">
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">
-                            <i class="fas fa-sign-in-alt"></i> ورود به پنل
-                        </button>
-                    </form>
-                    <p style="text-align: center; margin-top: 1.5rem; color: #666;">
-                        <a href="../index.html" style="color: #e74c3c; text-decoration: none;">
-                            <i class="fas fa-arrow-right"></i> بازگشت به فروشگاه
-                        </a>
-                    </p>
-                </div>
-            `;
-
-            document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('adminEmail').value;
-                const password = document.getElementById('adminPassword').value;
-
-                if (email === "admin_shaian@gmail.com" && password === "shaian_112233") {
-                    localStorage.setItem('current_user', JSON.stringify({
-                        name: 'مدیر سیستم',
-                        email: email,
-                        isAdmin: true
-                    }));
-                    location.reload();
-                } else {
-                    alert('❌ اطلاعات ورود اشتباه است!');
-                }
-            });
-        } else {
-            // نمایش پنل مدیریت
-            document.getElementById('adminContainer').innerHTML = `
-                <aside class="sidebar">
-                    <div class="sidebar-header">
-                        <h2><i class="fas fa-crown"></i> پنل مدیریت موناکو</h2>
-                        <p style="color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-size: 0.9rem;">مدیریت کامل فروشگاه</p>
-                    </div>
-                    
-                    <ul class="nav-menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active" onclick="showSection('dashboard')">
-                                <i class="fas fa-tachometer-alt"></i>
-                                داشبورد
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="showSection('products')">
-                                <i class="fas fa-tshirt"></i>
-                                مدیریت محصولات
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="showSection('orders')">
-                                <i class="fas fa-shopping-cart"></i>
-                                مدیریت سفارشات
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="showSection('users')">
-                                <i class="fas fa-users"></i>
-                                مدیریت کاربران
-                            </a>
-                        </li>
-                    </ul>
-                    
-                    <div style="padding: 0 2rem; margin-top: auto;">
-                        <button class="btn btn-secondary" onclick="logout()" style="width: 100%;">
-                            <i class="fas fa-sign-out-alt"></i>
-                            خروج از پنل
-                        </button>
-                    </div>
-                </aside>
-                
-                <main class="main-content">
-                    <div class="header">
-                        <div>
-                            <h1 style="color: #2c3e50;">👑 خوش آمدید مدیر!</h1>
-                            <p style="color: #666;">آخرین بروزرسانی: ${new Date().toLocaleDateString('fa-IR')}</p>
-                        </div>
-                        <div>
-                            <a href="../index.html" class="btn btn-primary">
-                                <i class="fas fa-store"></i>
-                                مشاهده فروشگاه
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div id="contentArea">
-                        <!-- محتوا اینجا نمایش داده می‌شود -->
-                    </div>
-                </main>
-            `;
-
-            showSection('dashboard');
-        }
-
-        function showSection(section) {
-            const contentArea = document.getElementById('contentArea');
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // آپدیت لینک‌های منو
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            event.target.classList.add('active');
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
             
-            switch(section) {
-                case 'dashboard':
-                    showDashboard();
-                    break;
-                case 'products':
-                    showProducts();
-                    break;
-                case 'orders':
-                    showOrders();
-                    break;
-                case 'users':
-                    showUsers();
-                    break;
+            if (email === "admin_shaian@gmail.com" && password === "shaian_112233") {
+                localStorage.setItem('current_user', JSON.stringify({
+                    name: 'مدیر سیستم',
+                    email: email,
+                    isAdmin: true
+                }));
+                window.location.href = "index.html";
+            } else {
+                alert('❌ اطلاعات ورود اشتباه است!');
             }
-        }
-
-        function showDashboard() {
-            const products = JSON.parse(localStorage.getItem('monaco_products')) || [];
-            const users = JSON.parse(localStorage.getItem('monaco_users')) || [];
-            
-            document.getElementById('contentArea').innerHTML = `
-                <div class="content-grid">
-                    <div class="card">
-                        <h3><i class="fas fa-chart-line text-primary"></i> آمار کلی</h3>
-                        <div style="margin-top: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                <span>تعداد محصولات:</span>
-                                <span style="font-weight: bold; color: #2c3e50;">${products.length} محصول</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                <span>کاربران ثبت‌نام شده:</span>
-                                <span style="font-weight: bold; color: #2c3e50;">${users.length} کاربر</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <h3><i class="fas fa-bolt text-warning"></i> اقدامات سریع</h3>
-                        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-                            <button class="btn btn-primary" onclick="showSection('products')">
-                                <i class="fas fa-plus"></i> افزودن محصول جدید
-                            </button>
-                            <button class="btn btn-secondary" onclick="exportData()">
-                                <i class="fas fa-download"></i> خروجی گرفتن از داده‌ها
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <h3><i class="fas fa-info-circle text-info"></i> راهنما</h3>
-                        <ul style="margin-top: 1rem; padding-right: 1.5rem; color: #666; line-height: 1.8;">
-                            <li>برای افزودن محصول جدید به بخش "مدیریت محصولات" بروید</li>
-                            <li>می‌توانید تخفیف‌های ویژه روی محصولات تنظیم کنید</li>
-                            <li>همیشه از داده‌های خود خروجی بگیرید</li>
-                        </ul>
-                    </div>
-                </div>
-            `;
-        }
-
-        function showProducts() {
-            const products = JSON.parse(localStorage.getItem('monaco_products')) || [];
-            
-            if (products.length === 0) {
-                document.getElementById('contentArea').innerHTML = `
-                    <div class="card">
-                        <div style="text-align: center; padding: 3rem;">
-                            <i class="fas fa-box-open" style="font-size: 4rem; color: #ddd;"></i>
-                            <h3 style="margin-top: 1rem; color: #666;">هنوز محصولی اضافه نشده است</h3>
-                            <button class="btn btn-primary" onclick="addProduct()" style="margin-top: 1.5rem;">
-                                <i class="fas fa-plus"></i> افزودن اولین محصول
-                            </button>
-                        </div>
-                    </div>
-                `;
-                return;
-            }
-            
-            let productsHTML = `
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                        <h3>محصولات فروشگاه (${products.length})</h3>
-                        <button class="btn btn-primary" onclick="addProduct()">
-                            <i class="fas fa-plus"></i> محصول جدید
-                        </button>
-                    </div>
-                    
-                    <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <thead>
-                                <tr style="background: #f8f9fa;">
-                                    <th style="padding: 1rem; text-align: right;">تصویر</th>
-                                    <th style="padding: 1rem; text-align: right;">نام محصول</th>
-                                    <th style="padding: 1rem; text-align: right;">قیمت</th>
-                                    <th style="padding: 1rem; text-align: right;">تعداد رنگ‌ها</th>
-                                    <th style="padding: 1rem; text-align: right;">عملیات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-            `;
-            
-            products.forEach(product => {
-                const hasDiscount = product.discount?.hasDiscount;
-                const currentPrice = hasDiscount ? product.discount.discountedPrice : product.price;
-                
-                productsHTML += `
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 1rem;">
-                            <img src="${product.images?.[0] || 'https://via.placeholder.com/50'}" 
-                                 style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
-                        </td>
-                        <td style="padding: 1rem;">
-                            <strong>${product.name}</strong>
-                            ${hasDiscount ? '<span style="background: #28a745; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 0.5rem;">تخفیف</span>' : ''}
-                        </td>
-                        <td style="padding: 1rem;">
-                            <div>${currentPrice.toLocaleString()} تومان</div>
-                            ${hasDiscount ? `<div style="font-size: 0.9rem; color: #666; text-decoration: line-through;">${product.price.toLocaleString()} تومان</div>` : ''}
-                        </td>
-                        <td style="padding: 1rem;">
-                            ${product.colors?.length || 0} رنگ
-                        </td>
-                        <td style="padding: 1rem;">
-                            <button class="btn btn-secondary" onclick="editProduct(${product.id})" style="padding: 6px 12px; font-size: 0.9rem;">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-danger" onclick="deleteProduct(${product.id})" style="padding: 6px 12px; font-size: 0.9rem; margin-right: 0.5rem;">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            });
-            
-            productsHTML += `
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('contentArea').innerHTML = productsHTML;
-        }
-
-        function addProduct() {
-            // هدایت به صفحه اصلی برای افزودن محصول
-            window.location.href = '../index.html';
-        }
-
-        function editProduct(id) {
-            alert('ویرایش محصول - این قابلیت در نسخه کامل فعال می‌شود');
-        }
-
-        function deleteProduct(id) {
-            if (confirm('آیا از حذف این محصول اطمینان دارید؟')) {
-                let products = JSON.parse(localStorage.getItem('monaco_products')) || [];
-                products = products.filter(p => p.id !== id);
-                localStorage.setItem('monaco_products', JSON.stringify(products));
-                showProducts();
-                alert('محصول با موفقیت حذف شد');
-            }
-        }
-
-        function showOrders() {
-            document.getElementById('contentArea').innerHTML = `
-                <div class="card">
-                    <div style="text-align: center; padding: 3rem;">
-                        <i class="fas fa-shopping-cart" style="font-size: 4rem; color: #ddd;"></i>
-                        <h3 style="margin-top: 1rem; color: #666;">سیستم مدیریت سفارشات</h3>
-                        <p style="color: #999; margin-top: 1rem;">
-                            این بخش در نسخه کامل پروژه فعال خواهد شد
-                        </p>
-                    </div>
-                </div>
-            `;
-        }
-
-        function showUsers() {
-            const users = JSON.parse(localStorage.getItem('monaco_users')) || [];
-            
-            let usersHTML = `
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                        <h3>کاربران فروشگاه (${users.length})</h3>
-                    </div>
-                    
-                    ${users.length === 0 ? 
-                        '<p style="text-align: center; color: #666; padding: 2rem;">هنوز کاربری ثبت‌نام نکرده است</p>' :
-                        `
-                        <div style="overflow-x: auto;">
-                            <table style="width: 100%; border-collapse: collapse;">
-                                <thead>
-                                    <tr style="background: #f8f9fa;">
-                                        <th style="padding: 1rem; text-align: right;">نام کاربر</th>
-                                        <th style="padding: 1rem; text-align: right;">ایمیل</th>
-                                        <th style="padding: 1rem; text-align: right;">تاریخ عضویت</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                        `
-                    }
-            `;
-            
-            users.forEach(user => {
-                const joinDate = new Date(user.id).toLocaleDateString('fa-IR');
-                usersHTML += `
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 1rem;">
-                            <i class="fas fa-user" style="margin-left: 0.5rem;"></i>
-                            ${user.name}
-                        </td>
-                        <td style="padding: 1rem;">${user.email}</td>
-                        <td style="padding: 1rem;">${joinDate}</td>
-                    </tr>
-                `;
-            });
-            
-            if (users.length > 0) {
-                usersHTML += `
-                                </tbody>
-                            </table>
-                        </div>
-                `;
-            }
-            
-            usersHTML += `</div>`;
-            document.getElementById('contentArea').innerHTML = usersHTML;
-        }
-
-        function exportData() {
-            const products = JSON.parse(localStorage.getItem('monaco_products')) || [];
-            const users = JSON.parse(localStorage.getItem('monaco_users')) || [];
-            
-            const data = {
-                products: products,
-                users: users,
-                exportDate: new Date().toISOString()
-            };
-            
-            const dataStr = JSON.stringify(data, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(dataBlob);
-            link.download = `monaco_backup_${new Date().getTime()}.json`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(link.href);
-            
-            alert('✅ پشتیبان‌گیری با موفقیت انجام شد!');
-        }
-
-        function logout() {
-            localStorage.removeItem('current_user');
-            location.reload();
-        }
+        });
     </script>
 </body>
 </html>
