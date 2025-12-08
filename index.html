@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موناکو | بوتیک لباس لوکس</title>
+    <meta name="description" content="بوتیک موناکو - ارائه کننده لباس‌های لوکس و شیک">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003/font.css">
+    <style>
+        /* استایل‌های اصلی */
+        :root {
+            --primary: #e74c3c;
+            --primary-dark: #c0392b;
+            --secondary: #2c3e50;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2d3436;
+            --whatsapp: #25D366;
+            --telegram: #0088cc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Vazirmatn, sans-serif;
+            background: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* هدر */
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent);
+            margin-left: 5px;
+        }
+
+        /* محصولات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 2rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .product-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* فوتر */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر -->
+    <header>
+        <nav class="navbar container">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i> موناکو
+            </a>
+            <div>
+                <a href="admin.html" class="btn" style="background: var(--accent);">
+                    <i class="fas fa-user-shield"></i> مدیریت
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- محتوای اصلی -->
+    <main class="container">
+        <h1 style="text-align: center; margin: 2rem 0; color: var(--secondary);">
+            محصولات موناکو
+        </h1>
+
+        <!-- لیست محصولات -->
+        <div class="products-grid" id="productsContainer">
+            <!-- محصولات با JavaScript ساخته میشن -->
+        </div>
+    </main>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="container">
+            <p>© ۱۴۰۳ بوتیک موناکو. تمامی حقوق محفوظ است.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                شماره تماس: ۰۹۱۲۹۵۷۳۰۹۶
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
